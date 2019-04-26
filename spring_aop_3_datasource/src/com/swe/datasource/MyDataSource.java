@@ -41,7 +41,7 @@ public class MyDataSource {
                         Object rtValue = null;
                         //1.判断当前方法是否为close方法
                         if ("close".equals(method.getName())) {
-                            //不能直接关闭
+                            //不能直接关闭,将连接放回连接池
                             pool.add(conn);
                         } else {
                             rtValue = method.invoke(conn, args);

@@ -1,8 +1,6 @@
 package com.swe.cglib;
 
 
-
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -40,22 +38,19 @@ public class Client {
      *                          Class:被代理对象的字节码
      *                          Callback:如何代理。它和InvocatioonHandler的作用是一样的，它也是一个接口，我们一般使用该接口的子接口的MethodInterceptor
      *                              在使用时我们也是创建该接口的实现类，即匿名内部类。
-     *
-     *
-     *
      * @param args
      */
     public static void main(String[] args) {
-
-
-        Actor actor=new Actor();
+        final Actor actor=new Actor();
         Actor cglibActor = (Actor) Enhancer.create(actor.getClass(), new MethodInterceptor() {
             /**
-             * 执行被代理对象的任何方法，都会经过该方法，它和基于接口动态代理的invoke方法是一模一样的。
+             * 执行被代理对象的任何方法，都会经过该方法(intercept)，它和基于接口动态代理的invoke方法是一模一样的。
              * 方法参数：
-             * 前面的三个和invoke方法的参数含义和作用都一样。
-             * MethodProxy methodProxy：当前执行方法的代理对象，一般不用；
-             *
+             *     Object proxy：? 代理对象的引用，不一定每次都会有；
+             *     Method method：当前执行的方法；
+             *     Object[] args：当前执行方法所需要的参数；
+             *     (前面的三个和invoke方法的参数含义和作用都一样)
+             *     MethodProxy methodProxy：当前执行方法的代理对象，一般不用；
              * @param proxy
              * @param method
              * @param args
@@ -63,15 +58,13 @@ public class Client {
              * @return
              * @throws Throwable
              */
-
             @Override
             public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
-
                 Object rtValue = null;
                 //1.取出执行方法中的参数：给多少钱
                 float money = (float) args[0];
                 //2.判断当前方法执行的是什么方法
-                if ("baseAct".equals(method.getName())) {
+                if ("basicAct".equals(method.getName())) {
                     //基本演出
                     if (money > 10000) {
                         //执行方法：开始表演
@@ -88,7 +81,7 @@ public class Client {
             }
         });
 
-        cglibActor.basicAct(60000);
+        cglibActor.basicAct(20000);
         cglibActor.dangerAct(60000);
     }
 }
