@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" filepath="$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_2/spring_aop_2.iml" filepath="$PROJECT_DIR$/spring_aop_2/spring_aop_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_2_adviceType/spring_aop_2_adviceType.iml" filepath="$PROJECT_DIR$/spring_aop_2_adviceType/spring_aop_2_adviceType.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_aop_2_annotationAop/spring_aop_2_annotationAop.iml" filepath="$PROJECT_DIR$/spring_aop_2_annotationAop/spring_aop_2_annotationAop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_3_datasource/spring_aop_3_datasource.iml" filepath="$PROJECT_DIR$/spring_aop_3_datasource/spring_aop_3_datasource.iml" />
     </modules>
   </component>

@@ -18,16 +18,16 @@
         <!--第三步：使用aop:aspect配置切面，id属性用于给切面提供一个唯一标识。ref属性：用于应用通知Bean的id-->
         <aop:pointcut expression="execution(* com.swe.service.impl.*.*(..))" id="pt2"/>
         <!--配置切面-->
-        <!--<aop:aspect id="logAdvice" ref="logger">-->
-            <!--&lt;!&ndash; 配置前置通知,永远在切入点方法执行之前执行&ndash;&gt;-->
-            <!--<aop:before method="beforePrintLog" pointcut-ref="pt2"/>-->
-            <!--&lt;!&ndash; 配置后置通知：切入点方法正常执行之后执行&ndash;&gt;-->
-            <!--<aop:after-returning method="afterReturnPrintLog" pointcut-ref="pt2"/>-->
-            <!--&lt;!&ndash; 配置异常通知：切入点方法执行产生异常之后执行。它和后置通知永远只能执行一个&ndash;&gt;-->
-            <!--<aop:after-throwing method="afterThrowsPrintLog" pointcut-ref="pt2"/>-->
-            <!--&lt;!&ndash; 配置最终通知：无论切入点方法是否正常执行，它都会在其之后执行&ndash;&gt;-->
-            <!--<aop:after method="afterPrintLog" pointcut-ref="pt2"/>-->
-        <!--</aop:aspect>-->
+        <aop:aspect id="logAdvice" ref="logger">
+            <!-- 配置前置通知,永远在切入点方法执行之前执行-->
+            <aop:before method="beforePrintLog" pointcut-ref="pt2"/>
+            <!-- 配置后置通知：切入点方法正常执行之后执行-->
+            <aop:after-returning method="afterReturnPrintLog" pointcut-ref="pt2"/>
+            <!-- 配置异常通知：切入点方法执行产生异常之后执行。它和后置通知永远只能执行一个-->
+            <aop:after-throwing method="afterThrowsPrintLog" pointcut-ref="pt2"/>
+            <!-- 配置最终通知：无论切入点方法是否正常执行，它都会在其之后执行-->
+            <aop:after method="afterPrintLog" pointcut-ref="pt2"/>
+        </aop:aspect>
         <aop:aspect id="logAdvice2" ref="logger">
             <aop:around method="aroundPrintLog" pointcut-ref="pt2"/>
         </aop:aspect>
